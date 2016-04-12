@@ -1,0 +1,9 @@
+include Makefile
+
+KERNEL=$(shell uname -r)
+
+install: all
+	mkdir -p ${RPM_BUILD_ROOT}/usr/sbin
+	cp ipfw/ipfw ${RPM_BUILD_ROOT}/usr/sbin/
+	mkdir -p ${RPM_BUILD_ROOT}/lib/modules/$(KERNEL)/kernel/net/ipv4/
+	cp kipfw-mod/ipfw_mod.ko ${RPM_BUILD_ROOT}/lib/modules/$(KERNEL)/kernel/net/ipv4/
